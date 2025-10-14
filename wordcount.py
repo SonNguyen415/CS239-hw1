@@ -119,18 +119,18 @@ def count_words(item):
     word, occurances = item 
     return (word, sum(occurances)) 
 
+
 if __name__ == '__main__': 
-    if len(sys.argv) > 2:
-        file_path = sys.argv[1]
-        nprocs = int(sys.argv[2])
+    if len(sys.argv) > 1:
+        nprocs = int(sys.argv[1])
         if nprocs < 1:
             nprocs = multiprocessing.cpu_count()
     else:
-        print("Usage: python wordcount.py <relative_input_path> <num_processes>")
+        print("Usage: python wordcount.py <num_processes>")
         sys.exit(1)
 
     start_time = time.time()  
-    input_files = glob.glob(f'{file_path}/*') 
+    input_files = glob.glob('enwik/*') 
 
     mapper = SimpleMapReduce(file_to_words, count_words) 
     word_counts = mapper(input_files, nprocs) 
