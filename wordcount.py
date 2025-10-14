@@ -126,7 +126,7 @@ if __name__ == '__main__':
         if nprocs < 1:
             nprocs = multiprocessing.cpu_count()
     else:
-        print("Usage: python wordcount.py <relative_file_path> <num_processes>")
+        print("Usage: python wordcount.py <relative_input_path> <num_processes>")
         sys.exit(1)
 
     start_time = time.time()  
